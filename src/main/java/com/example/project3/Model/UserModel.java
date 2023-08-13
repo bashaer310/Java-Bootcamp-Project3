@@ -33,7 +33,7 @@ public class UserModel {
 
     @NotNull(message = "Balance must not be empty ")
     @Positive(message = "Balance must be a positive number")
-    private Integer balance;
+    private Double balance;
 
 
 

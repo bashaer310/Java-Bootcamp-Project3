@@ -21,7 +21,7 @@ public class ProductModel {
 
     @NotNull(message = "Price must not be empty ")
     @Positive(message = "Price must be a positive number")
-    private Integer price;
+    private Double price;
 
     @NotEmpty(message = "Category Id must not be empty")
     private String categoryId;
