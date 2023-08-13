@@ -22,8 +22,8 @@ public class ProductController {
     private final ProductService productService;
     @GetMapping("/get")
     public ResponseEntity getProducts(){
-        ArrayList<ProductModel> users = productService.getProducts();
-        return ResponseEntity.status(200).body(users);
+        ArrayList<ProductModel> products = productService.getProducts();
+        return ResponseEntity.status(200).body(products);
     }
 
     @PostMapping("/add")
@@ -71,5 +71,14 @@ public class ProductController {
         return ResponseEntity.status(200).body(products.get(index));
     }
 
+    @GetMapping("/sort")
+    public ResponseEntity sortProduct()
+    {
+        ArrayList<ProductModel> products = productService.getProducts();
+        if (products.size()<=0){
+            return ResponseEntity.status(400).body(new ApiResponse("Products not found "));
+        }
+        return ResponseEntity.status(200).body(productService.sortProducts());
+    }
 
 }

@@ -49,4 +49,21 @@ public class ProductService {
         }
         return -1;
     }
+
+
+    public ArrayList<ProductModel> sortProducts(){
+
+        int min;
+
+        for (int i = 0; i <products.size() ; i++) {
+            for (int j = i + 1; j <products.size(); j++) {
+                if (products.get(i).getPrice() > products.get(j).getPrice()) {
+                    ProductModel temp= products.get(i);
+                    products.set(i,products.get(j));
+                    products.set(j,temp);
+                }
+            }
+        }
+        return products;
+    }
 }
