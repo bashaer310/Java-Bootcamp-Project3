@@ -64,7 +64,7 @@ public class ProductController {
     public ResponseEntity findProduct(@PathVariable String productId)
     {
         ArrayList<ProductModel> products = productService.getProducts();
-        int index= productService.findProduct(products,productId);
+        int index= productService.findProduct(productId);
         if (index==-1){
             return ResponseEntity.status(400).body(new ApiResponse("Product not found "));
         }

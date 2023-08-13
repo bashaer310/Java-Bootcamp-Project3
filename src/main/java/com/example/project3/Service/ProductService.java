@@ -40,7 +40,7 @@ public class ProductService {
         return false;
     }
 
-    public int findProduct(ArrayList<ProductModel> products,String id){
+    public int findProduct(String id){
         for (int i = 0; i <products.size() ; i++) {
             if(products.get(i).getId().equals(id))
             {

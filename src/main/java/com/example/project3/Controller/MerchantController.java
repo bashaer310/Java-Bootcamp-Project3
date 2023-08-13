@@ -75,7 +75,7 @@ public class MerchantController {
     public ResponseEntity findUser(@PathVariable String merchantId)
     {
         ArrayList<MerchantModel> merchants = merchantService.getMerchants();
-        int index= merchantService.findMerchant(merchants,merchantId);
+        int index= merchantService.findMerchant(merchantId);
         if (index==-1){
             return ResponseEntity.status(400).body(new ApiResponse("Merchant not found "));
         }

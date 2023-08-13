@@ -62,7 +62,7 @@ public class UserController {
     public ResponseEntity findUser(@PathVariable String userId)
     {
         ArrayList<UserModel> users = userService.getUsers();
-        int index= userService.findUser(users,userId);
+        int index= userService.findUser(userId);
         if (index==-1){
             return ResponseEntity.status(400).body(new ApiResponse("User not found "));
         }

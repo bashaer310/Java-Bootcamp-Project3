@@ -60,7 +60,7 @@ public class MerchantService {
         return false;
     }
 
-    public int findMerchant(ArrayList<MerchantModel> merchants, String id){
+    public int findMerchant(String id){
         for (int i = 0; i <merchants.size() ; i++) {
             if(merchants.get(i).getId().equals(id))
             {

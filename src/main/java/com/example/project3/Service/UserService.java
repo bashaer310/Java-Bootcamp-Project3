@@ -52,7 +52,7 @@ public class UserService {
         }
         return false;
     }
-    public int findUser(ArrayList<UserModel> users,String id){
+    public int findUser(String id){
         for (int i = 0; i <users.size() ; i++) {
             if(users.get(i).getId().equals(id))
             {
@@ -63,22 +63,22 @@ public class UserService {
     }
 
     public boolean buyProduct(String userId,String productId,String merchantId){
-        ArrayList<MerchantModel> merchant=merchantService.getMerchants();
-        ArrayList<ProductModel> product= productService.getProducts();
-        ArrayList<MerchantStockModel> merchantStocks= merchantStockService.getMerchantStocks();
 
-        int uIndex=findUser(users,userId);
-        int pIndex=productService.findProduct(product,productId);
-        int mIndex=merchantService.findMerchant(merchant,merchantId);
+        ArrayList<MerchantStockModel> merchantStocks = merchantStockService.getMerchantStocks();
+        ArrayList<ProductModel> products = productService.getProducts();
+
+        int uIndex=findUser(userId);
+        int pIndex=productService.findProduct(productId);
+        int mIndex=merchantService.findMerchant(merchantId);
 
         if((uIndex & pIndex & mIndex)!=-1)
         {
             for (int i = 0; i < merchantStocks.size(); i++) {
                 if (merchantStocks.get(i).getMerchantId().equals(merchantId) & merchantStocks.get(i).getProductId().equals(productId)) {
-                    if(users.get(uIndex).getBalance()>product.get(pIndex).getPrice()&&merchantStocks.get(i).getStock()>0)
+                    if(users.get(uIndex).getBalance()>products.get(pIndex).getPrice()&&merchantStocks.get(i).getStock()>0)
                     {
                         merchantStocks.get(i).setStock(merchantStocks.get(i).getStock()-1);
-                        users.get(uIndex).setBalance(users.get(uIndex).getBalance()-product.get(pIndex).getPrice());
+                        users.get(uIndex).setBalance(users.get(uIndex).getBalance()-products.get(pIndex).getPrice());
                         return true;
                     }
                 }
